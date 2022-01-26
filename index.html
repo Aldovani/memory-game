@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Memory card</title>
+  </head>
+  <body>
+    <h1 class="title">Jogo da memoria</h1>
+
+    <section class="container-info">
+      <span class="jogadas">Jogadas:0</span>
+      <span class="time">Tempo:00:00</span>
+    </section>
+
+    <main>
+      <div class="container-card"></div>
+    </main>
+
+    <div class="modal">
+      <div class="content-modal">
+        <img src="assets/images/Web.png" alt="" />
+        <h1>BUUH!!</h1>
+        <p>
+          Parabéns, você terminou esse jogo da memória. Experimente jogar uma
+          outra dificuldade ou jogue na mesma novamente.
+        </p>
+        <button class="button-play">Jogar Novamente</button>
+      </div>
+    </div>
+
+    <audio src="assets/audio/music.mp3" loop autoplay></audio>
+    <button class="button-music">
+      <img src="/assets/images/Volume-Up.svg" alt="" />
+    </button>
+
+    <script src="main.js" type="module"></script>
+    <script src="memorCard.js"></script>
+  </body>
+</html>
