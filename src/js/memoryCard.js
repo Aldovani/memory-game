@@ -1,4 +1,4 @@
-import {start,clearTimer} from "./timer.js"
+import { start, clearTimer } from "./timer.js";
 
 const cardArray = [
   {
@@ -75,7 +75,6 @@ const cardArray = [
   },
 ];
 
-cardArray.sort(() => 0.5 - Math.random());
 const cardsChosen = [],
   cardsChosenId = [],
   cardsWoh = [];
@@ -84,6 +83,8 @@ let tentativas = 0;
 const containerCard = document.querySelector(".container-card");
 
 export function createBoard() {
+  cardArray.sort(() => 0.5 - Math.random());
+
   for (let i = 0; i < cardArray.length; i++) {
     const Card = `
   <div class="flip-card" data-id=${i}>
@@ -108,12 +109,11 @@ function checkForMatch() {
   const cardTwoId = cardsChosenId[1];
   const elementOne = document.querySelector(`[data-id='${cardOneId}']`);
   const elementTwo = document.querySelector(`[data-id='${cardTwoId}']`);
- 
-  
+
   if (cardsChosen[0] === cardsChosen[1]) {
     elementOne.classList.add("match");
     elementTwo.classList.add("match");
-    
+
     cardsWoh.push(cardsChosen);
   } else {
     elementOne.classList.remove("show");
@@ -132,9 +132,7 @@ function flipCard() {
     start();
   }
 
-
   const cardId = this.getAttribute("data-id");
-  console.log(cardsChosenId.includes(cardId))
   if (cardsChosenId.includes(cardId)) return;
   cardsChosen.push(cardArray[cardId].name);
   cardsChosenId.push(cardId);
@@ -142,7 +140,7 @@ function flipCard() {
 
   if (cardsChosen.length === 2) {
     tentativas++;
-    document.querySelector(".jogadas").textContent =`Jogadas: ${tentativas}`;
+    document.querySelector(".jogadas").textContent = `Jogadas: ${tentativas}`;
     document
       .querySelectorAll(".flip-card")
       .forEach((card) => card.removeEventListener("click", flipCard));
@@ -164,16 +162,16 @@ function checkWin() {
   if (cardsWoh.length === cardArray.length / 2) {
     clearTimer();
     isPlaying = false;
-   document.querySelector(".modal").classList.add("show");
+    document.querySelector(".modal").classList.add("show");
   }
 }
 
 const buttonPlay = document.querySelector(".button-play");
-buttonPlay.addEventListener("click", () => { 
+buttonPlay.addEventListener("click", () => {
   containerCard.innerHTML = "";
   document.querySelector(".modal").classList.remove("show");
   cardsWoh.length = 0;
   tentativas = 0;
 
-  createBoard()
-})
+  createBoard();
+});
